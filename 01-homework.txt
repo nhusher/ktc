@@ -1,0 +1,58 @@
+
+Homework 1 - Recursion
+
+"To iterate is human, to recurse is divine."
+  -- L. Peter Deutsch 
+
+
+Topics: CS basics, problem solving
+
+
+Recursion is one of the more challenging computer science concepts to learn, but is also one of the most rewarding once understood. It can be used to create surprising and beautiful solutions to problems, and is key to understanding the math that supports computer science.
+
+Why recursion?
+Alternatives to recursion.
+
+
+Problem: Rendering a menu tree
+
+Imagine that you've been given a menu tree as a data structure, and you've been asked to render it to HTML. The menu tree could be one level deep, two levels deep, or N levels deep. How might we use recursion to render the following nested data structure to some kind of HTML? How might we perform the same task without recursion?
+
+const menu = [{
+  url: '/home',
+  label: 'Home'
+}, {
+  url: '/inventory',
+  label: 'All models',
+  children: [{
+    url: '/inventory/sedans',
+    label: 'Sedans'
+  }, {
+    url: '/inventory/suvs',
+    label: 'SUVs',
+    children: [{
+      url: '/inventory/suvs/midsize',
+      label: 'Midsize
+    }, {
+      url: '/inventory/suvs/full-size',
+      label: 'Full size',
+      children: [...]
+    }]
+  }, {
+    url: '/inventory/roadsters',
+    label: 'Roadsters'
+  }]
+}, {
+  url: '/service',
+  label: 'Service'
+}]
+
+// Given a menu tree structure like what is described above, render it as a
+// nested HTML fragment:
+function renderMenu (menu) {}
+
+------------------------------------------------------------------------------
+
+
+
+
