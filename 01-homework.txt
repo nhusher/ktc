@@ -8,15 +8,79 @@ Homework 1 - Recursion
 Topics: CS basics, problem solving
 
 
-Recursion is one of the more challenging computer science concepts to learn, but is also one of the most rewarding once understood. It can be used to create surprising and beautiful solutions to problems, and is key to understanding the math that supports computer science.
+Recursion is one of the more challenging computer science concepts to learn,
+but is also one of the most rewarding once understood. It can be used to create
+surprising and beautiful solutions to problems, and is an important cornerstone
+to understanding the math that undergirds computer science.
 
-Why recursion?
-Alternatives to recursion.
+Recursion is the practice of calling a function _F_ within the body of _F_. The
+simplest recursive function would look like this:
+
+function recurse () {
+  return recurse() // call this function again
+}
+
+When you call `recurse`, it will call itself infinitely until the machine
+overflows its stack and the program crashes. You can run this code in Chrome to
+see the result.
+
+A function that recurses until crashing isn't very useful, so let's look at
+some example recursive functions that actually get work done:
+
+// returns the nth number in the fibonacci sequence:
+// 0 = 1
+// 1 = 1
+// 2 = 2
+// 3 = 3
+// 4 = 5
+// 5 = 8
+// ...
+function fibonacci (n) {
+  if (n === 0) return 1
+  if (n === 1) return 1
+  else return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+The fibonacci sequence is one that's recursive by definition: it's possible to
+make non-recursive versions of the algorithm, but the recursive version is
+considered the simplest version.
+
+Let's look at a problem that isn't recursive by definition, but can be resolved
+by recursion:
+
+// Sum an array of numbers passed to the function
+function sum ([first, ...rest]) {
+  if (first !== undefined) return first + sum(rest)
+  else return 0
+}
+
+This is a good example of how iteration and recursion are cousins of each
+other. While iteration "walks" each member of a collection and performs some
+operation, recursion operates on the first item of the collection while
+delegating the remaining subset to a recursive call. In practice, this means
+that any recursive function can be written iteratively, and any iterative
+function can be written using recursion.
+
+Recursion is a form of the "divide and conquer" approach. In each of the above
+functions, each level of recursion operates on a smaller piece of the overall
+problem. In the case of `sum`, the first iteration operates on the whole list
+of numbers, taking just the first element and passing all but that first
+argument to another call to itself. When the `sum` function detects that
+there's no more work left to be done, it returns an appropriately-empty value.
+
+This reveals something about the structure of recursive functions: They have
+one or more "base cases" which do not result in further recursion, and at least
+one "recursive case" where they call themselves with a smaller portion of the
+available dataset.
 
 
 Problem: Rendering a menu tree
 
-Imagine that you've been given a menu tree as a data structure, and you've been asked to render it to HTML. The menu tree could be one level deep, two levels deep, or N levels deep. How might we use recursion to render the following nested data structure to some kind of HTML? How might we perform the same task without recursion?
+Imagine that you've been given a menu tree as a data structure, and you've been
+asked to render it to HTML. The menu tree could be one level deep, two levels
+deep, or N levels deep. How might we use recursion to render the following
+nested data structure to some kind of HTML? How might we perform the same task
+without recursion?
 
 const menu = [{
   url: '/home',
@@ -50,9 +114,6 @@ const menu = [{
 // Given a menu tree structure like what is described above, render it as a
 // nested HTML fragment:
 function renderMenu (menu) {}
-
-------------------------------------------------------------------------------
-
 
 
 
